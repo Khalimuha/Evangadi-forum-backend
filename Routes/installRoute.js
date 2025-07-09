@@ -1,8 +1,8 @@
 // updated
 const express = require("express");
-const router=express.Router()
+const router = express.Router();
 
-const {install}=require('../Controller/installController')
-router.get("/install",install)
+const { install } = require("../controller/installController");
+router.get("/install", install);
 
-  module.exports=router
+module.exports = router;
