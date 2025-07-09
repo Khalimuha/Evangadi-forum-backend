@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const db = require("../db/dbconfig");
+const db = require("../db/dbConfig");
 const { StatusCodes } = require("http-status-codes");
 
 // POST /users/forgot-password
