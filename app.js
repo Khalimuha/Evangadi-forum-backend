@@ -33,9 +33,8 @@ app.get("/", (req, res) => {
   res.send("Welcome");
 });
 
-
 // Database connection
-const dbConnection = require("./db/dbconfig");
+const dbConnection = require("./db/dbConfig");
 
 async function start() {
   try {
