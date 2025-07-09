@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const { StatusCodes } = require("http-status-codes");
-const dbConnection = require("../db/dbconfig");
+const dbConnection = require("../db/dbConfig");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -11,13 +11,13 @@ async function register(req, res) {
   const { username, first_name, last_name, email, password } = req.body;
   if (!username || !first_name || !last_name || !email || !password) {
     return res.status(StatusCodes.BAD_REQUEST).json({
-      message: "Please provide all required fields",
+      message: "Please provide all required fields"
     });
   }
   // response if the input password less than 8 digit
   if (password.length < 8) {
     return res.status(StatusCodes.BAD_REQUEST).json({
-      message: "Password must be at least 8 characters",
+      message: "Password must be at least 8 characters"
     });
   }
   try {
@@ -29,7 +29,7 @@ async function register(req, res) {
     // response if the user exists
     if (user.length > 0) {
       return res.status(StatusCodes.CONFLICT).json({
-        message: "User already existed",
+        message: "User already existed"
       });
     }
 
@@ -48,7 +48,7 @@ async function register(req, res) {
   } catch (error) {
     console.log(error.message);
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      message: "An unexpected error occurred.",
+      message: "An unexpected error occurred."
     });
   }
 }
@@ -90,7 +90,7 @@ async function login(req, res) {
     const username = user[0].username;
     const userid = user[0].userid;
     const token = jwt.sign({ username, userid }, process.env.JWTSECRET, {
-      expiresIn: "1d",
+      expiresIn: "1d"
     });
 
     return res

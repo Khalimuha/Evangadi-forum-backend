@@ -34,4 +34,3 @@ dbConnection
   });
 
 module.exports = dbConnection.promise();
-

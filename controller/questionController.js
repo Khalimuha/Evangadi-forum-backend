@@ -1,5 +1,5 @@
 // Import the database connection config
-const dbConnection = require("../db/dbconfig");
+const dbConnection = require("../db/dbConfig");
 
 const { StatusCodes } = require("http-status-codes");
 

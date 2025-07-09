@@ -1,11 +1,11 @@
-// 
+//
 const {
   StatusCodes,
   BAD_REQUEST,
   NOT_FOUND,
-  OK,
+  OK
 } = require("http-status-codes");
-const dbConnection = require("../db/dbconfig");
+const dbConnection = require("../db/dbConfig");
 const { json, query } = require("express");
 
 async function postAnswer(req, res) {
@@ -64,7 +64,7 @@ async function postAnswer(req, res) {
 //     );
 //     return res.status(StatusCodes.OK).json({ questionid, answer: answer });
 //   } catch (error) {
-    
+
 //     console.log(error.message);
 //     return res
 //       .status(StatusCodes.INTERNAL_SERVER_ERROR)
@@ -161,12 +161,10 @@ async function updateAnswer(req, res) {
     console.log("answer from body:", answer);
     console.log("user from token:", req.user); // check req.user is defined
 
-    
     await dbConnection.query(
       "UPDATE answers SET answer = ? WHERE answerid = ?",
       [answer, answerid]
     );
-    
 
     return res
       .status(StatusCodes.OK)
@@ -218,11 +216,9 @@ async function deleteAnswer(req, res) {
   }
 }
 
-
 module.exports = {
   postAnswer,
   getAnswer,
   updateAnswer,
   deleteAnswer
 };
-
